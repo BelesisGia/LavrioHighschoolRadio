@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lavrio Highschool Radio</title>
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+	<meta charset="utf-8">
+	<!-- Materialize Css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/6b4c67839b.js" crossorigin="anonymous"></script>
+
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!--Page.js-->
+    <script src="page.js"></script>
+    <!--Anim.css-->
+    <link rel="stylesheet" type="text/css" href="anim.css">
+</head>
+<body class="amber lighten-5">
+	<div>
+		<!-- Title -->
+		<div class="center-align">
+			<img src="images/microphone.png" style="margin: 0px 20px 0px 0px;">
+			<h1 class="font-watcher inline-block" style="margin: 2px 5px;">Lavrio Highschool Radio</h1>
+		</div>
+		<!-- CONTENT -->
+		<div class="container">
+			<div class="divider"></div>
+			<h4>&#8594 Listen Live: 
+				<a href="https://lavriohighschool.radio12345.com" target="_self">
+					https://lavriohighschool.radio12345.com
+				</a>
+			</h4>
+			<!-- Stream Listener -->
+			<div onselectstart="return false;">
+				<audio id="_Stream" src="https://freeuk23.listen2myradio.com/live.mp3?typeportmount=s1_14224_stream_829836720"></audio>
+				<div>
+					<img id="vinyl" src="images/vinyl.png" style="width: 8em;height:8em;">
+					<!--Controls-->
+					<div class="inline-block">
+						<i class="medium material-icons cursor-pointer" onclick="_StreamPlay()" onselectstart="return false;">play_arrow</i>
+						<i class="medium material-icons cursor-pointer" onclick="_StreamStop()" onselectstart="return false;">pause</i>
+						<i class="medium material-icons cursor-pointer" onclick="document.getElementById('_Stream').volume += 0.1" onselectstart="return false;">volume_up</i>
+						<i class="medium material-icons cursor-pointer" onclick="document.getElementById('_Stream').volume -= 0.1" onselectstart="return false;">volume_down</i>
+						<i class="medium material-icons cursor-pointer" onclick="document.getElementById('_Stream').currentTime += document.getElementById('_Stream').duration;" onselectstart="return false;">fast_forward</i>
+					</div>
+				</div>
+			</div>
+
+			<!-- Abous Us -->
+			<div>
+				<div class="inline-block">
+					<h4>Λίγα Λόγια Για Εμάς:</h4>
+					<div class="divider"></div>
+				</div>
+				<p class="flow-text line-height" onselectstart="return false;">
+					Το Γενικό Λύκειο Λαυρίου ξεκινά την δοκιμαστική λειτουργία του διαδικτυακού του ραδιοφώνου. Ακούστε καθημερινά από τις 8:30 το πρωί μέχρι τις 22:00 το βράδυ. Το ραδιόφωνο βρίσκεται σε πειραματικό στάδιο. Θα λειτουργήσει κανονικά από τις 13/12/2021. Το Γενικό Λύκειο Λαυρίου , με την τωρινή του μορφή, ιδρύθηκε το 1976 και αρχικά συστεγαζόταν με το Γυμνάσιο Λαυρίου. Εντούτοις η ιστορική του διαδρομή ξεκινά το 1923-24 με την ίδρυση στο Λαύριο του Πρακτικού Λυκείου Λαυρίου. Βρίσκεται στην οδό Α. Κορδέλα 4, μέσα στην πόλη του Λαυρίου και στεγάζεται σε ένα τριώροφο κτήριο που κατασκευάσθηκε το 1987, μέσα σε περιφραγμένο χώρο 12 στρεμμάτων.
+				</p>
+			</div>
+
+			<!-- Table of shows -->
+			<div class="inline-block">
+				<h4>Πρόγραμμα Εκπομπών:</h4>
+				<div class="divider"></div>
+				<blockquote>
+					Πατήστε το όνομα της εκπομπής για περιγραφή.
+				</blockquote>
+			</div>
+			<table class="striped">
+				<thead>
+					<tr>
+						<th>Ώρες:</th>
+						<th>Δευτέρα</th>
+						<th>Τρίτη</th>
+						<th>Τετάρτη</th>
+						<th>Πέμπτη</th>
+						<th>Παρασκευή</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>9:00-10:00</td>
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Mornin' News</td> <!--Δευτέρα-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Dour News</td> <!--Τρίτη-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Late Mornin'News</td> <!--Τετάρτη-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Dour News</td> <!--Πέμπτη-->
+						<td class="tooltipped" data-tooltip="Well...it's self-explained! News! Morning News!! Late Morning News!!!! What else did you expect...?">Late Mornin'News</td> <!--Παρασκευή-->
+
+					</tr>
+					<tr>
+						<td>10:00-11:00</td>
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Δε Couple</td> <!--Δευτέρα-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Show1</td> <!--Τρίτη-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Δε Couple</td> <!--Τετάρτη-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Unknown</td> <!--Πέμπτη-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Maybe Music?</td> <!--Παρασκευή-->
+
+					</tr>
+					<tr>
+						<td>11:00-12:00</td>
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Poro Pom Pom</td> <!--Δευτέρα-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Δε Couple</td> <!--Τρίτη-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Show 2</td> <!--Τετάρτη-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Lol</td> <!--Πέμπτη-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Definetely Music!</td> <!--Παρασκευή-->
+
+					</tr>
+					<tr>
+						<td>12:00-13:00</td>
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">After All Why Not Make A Website</td> <!--Δευτέρα-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Happy Easter!</td> <!--Τρίτη-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">?.?.?.?</td> <!--Τετάρτη-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Show 3</td> <!--Πέμπτη-->
+						<td class="tooltipped" data-tooltip="General Description Goes Here....">Absolutely Music!</td> <!--Παρασκευή-->
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- Social Media -->
+	<div class="fixed-action-btn">
+ 		<a class="btn-floating btn-large red">
+   			<i class="large material-icons">notifications</i>
+  		</a>
+  		<ul>
+    		<li><a href="#" target="_self" class="btn-floating btn-large blue"><i class="fab fa-facebook-square"></i></a></li>
+    		<li><a href="#" target="_self" class="btn-floating btn-large instagram"><i class="fab fa-instagram"></i></a></li>
+  		</ul>
+	</div>
+	<div style="margin-bottom:10em"></div>
+</body>
+</html>

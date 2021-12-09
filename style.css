@@ -1,0 +1,110 @@
+
+.Abs-bottom-right{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 1em;
+}
+.center-content{
+	text-align: center;
+}
+
+.display-none{
+	display: none;
+}
+
+.divider{
+	background-color: black !important;
+}
+
+.inline-block{
+	display: inline-block;
+}
+
+.line-height{
+	line-height: 30px !important; 
+}
+
+table.striped > tbody > tr:nth-child(2n+1){
+	background-color: #ffecb3 !important;
+}
+table > tbody > tr > td{
+	max-width: 2em;
+}
+
+.instagram{
+	background: #f09433; 
+	background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+	background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+	background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+}
+
+.material-tooltip{
+	max-width: 20em;
+}
+
+blockquote{
+	margin: 20px 0;
+  	padding-left: 1.5rem;
+  	border-left: 5px solid #ffd54f;
+}
+
+.cursor-pointer{
+	cursor: pointer;
+}
+
+
+/* ----- Fonts ----- */
+
+/*Motion*/
+@font-face{
+	font-family: 'Motion';
+	src: url('fonts/Motion.ttf');
+}
+.font-motion{
+	font-family: Motion;
+	font-size: 8em;
+}
+
+/*Carbon*/
+@font-face{
+	font-family: 'Carbon';
+	src: url('fonts/Carbon.ttf');
+}
+.font-carbon{
+	font-family: Carbon;
+	font-size: 8em;
+}
+
+/*Dryme*/
+@font-face{
+	font-family: 'Dryme';
+	src: url('fonts/Dryme.ttf');
+}
+.font-dryme{
+	font-family: Dryme;
+	font-size: 7em;
+}
+
+/*Eroded*/
+@font-face{
+	font-family: 'Eroded';
+	src: url('fonts/Eroded.ttf');
+}
+.font-eroded{
+	font-family: Eroded;
+	font-size: 8em;
+	letter-spacing: 4px;
+}
+
+/*Watcher*/
+@font-face{
+	font-family: 'Watcher';
+	src: url('fonts/Watcher.ttf');
+}
+.font-watcher{
+	font-family: Watcher;
+	font-size: 8em;
+	letter-spacing: 2px;
+}
