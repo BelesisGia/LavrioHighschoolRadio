@@ -1,16 +1,26 @@
-
 .Abs-bottom-right{
 	position: absolute;
 	bottom: 0;
 	right: 0;
 	margin: 1em;
 }
+
+.fixed-top-right{
+	position: fixed;
+	top: 15em;
+	right: 10em;
+}
+
 .center-content{
 	text-align: center;
 }
 
 .display-none{
 	display: none;
+}
+
+.unselectable{
+	-moz-user-select: none;
 }
 
 .divider{
@@ -44,6 +54,10 @@ table > tbody > tr > td{
 	max-width: 20em;
 }
 
+.fixed-action-btn{
+	-webkit-backface-visibility: hidden;
+}
+
 blockquote{
 	margin: 20px 0;
   	padding-left: 1.5rem;
@@ -54,13 +68,44 @@ blockquote{
 	cursor: pointer;
 }
 
+.btn{
+	border-radius: 8px;
+}
+
+/* Page Decorations */
+.title-decoration{
+	transform: scale(-0.3,0.3);
+	position: absolute;
+	top: -0.9em;
+	right: -1.2em;
+}
+
+.page-decoration-list{
+	margin: 0.2em 0px 4em 0px;
+	padding: 0;
+	white-space: nowrap;
+}
+.page-decoration-list>li{
+	display: inline-block;
+	margin: -0.25em;
+}
+.page-decoration-list>li:nth-child(2n){
+	display: inline-block;
+	margin: -0.25em;
+	transform: scale(-1,1);
+}
+
+.page-decoration{
+	width: 40em;
+	height: 5em;
+}
 
 /* ----- Fonts ----- */
 
 /*Motion*/
 @font-face{
 	font-family: 'Motion';
-	src: url('fonts/Motion.ttf');
+	src: url('../fonts/Motion.ttf');
 }
 .font-motion{
 	font-family: Motion;
@@ -70,7 +115,7 @@ blockquote{
 /*Carbon*/
 @font-face{
 	font-family: 'Carbon';
-	src: url('fonts/Carbon.ttf');
+	src: url('../fonts/Carbon.ttf');
 }
 .font-carbon{
 	font-family: Carbon;
@@ -80,7 +125,7 @@ blockquote{
 /*Dryme*/
 @font-face{
 	font-family: 'Dryme';
-	src: url('fonts/Dryme.ttf');
+	src: url('../fonts/Dryme.ttf');
 }
 .font-dryme{
 	font-family: Dryme;
@@ -90,7 +135,7 @@ blockquote{
 /*Eroded*/
 @font-face{
 	font-family: 'Eroded';
-	src: url('fonts/Eroded.ttf');
+	src: url('../fonts/Eroded.ttf');
 }
 .font-eroded{
 	font-family: Eroded;
@@ -98,13 +143,25 @@ blockquote{
 	letter-spacing: 4px;
 }
 
+.font-eroded-4em{
+	font-family: Eroded;
+	font-size: 4.5em;
+	letter-spacing: 4px;
+}
+
 /*Watcher*/
 @font-face{
 	font-family: 'Watcher';
-	src: url('fonts/Watcher.ttf');
+	src: url('../fonts/Watcher.ttf');
 }
 .font-watcher{
 	font-family: Watcher;
 	font-size: 8em;
+	letter-spacing: 2px;
+}
+
+.font-watcher-4em{
+	font-family: Watcher;
+	font-size: 4em;
 	letter-spacing: 2px;
 }

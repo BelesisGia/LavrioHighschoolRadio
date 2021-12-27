@@ -1,3 +1,11 @@
+<?php 
+	$programa_file = fopen('api/programa.json', 'r');
+	$programa = json_decode(fread($programa_file, filesize('api/programa.json')));
+
+	$news_file = fopen('api/news.json', 'r');
+	$news = json_decode(fread($news_file, filesize('api/programa.json')));
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,18 +21,27 @@
     <script src="https://kit.fontawesome.com/6b4c67839b.js" crossorigin="anonymous"></script>
 
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <!--Page.js-->
     <script src="page.js"></script>
     <!--Anim.css-->
-    <link rel="stylesheet" type="text/css" href="anim.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/anim.css">
 </head>
 <body class="amber lighten-5">
+	<ul class="page-decoration-list unselectable">
+		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
+		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
+		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
+		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
+	</ul>
 	<div>
 		<!-- Title -->
-		<div class="center-align">
+		<div class="center-align unselectable">
 			<img src="images/microphone.png" style="margin: 0px 20px 0px 0px;">
-			<h1 class="font-watcher inline-block" style="margin: 2px 5px;">Lavrio Highschool Radio</h1>
+			<h1 class="font-watcher inline-block" style="margin: 2px 5px;position: relative;">
+				<img class="title-decoration" src="images/christmas-hat.png">
+				Lavrio Highschool Radio
+			</h1>
 		</div>
 		<!-- CONTENT -->
 		<div class="container">
@@ -35,7 +52,7 @@
 				</a>
 			</h4>
 			<!-- Stream Listener -->
-			<div onselectstart="return false;">
+			<div class="unselectable">
 				<audio id="_Stream" src="https://freeuk23.listen2myradio.com/live.mp3?typeportmount=s1_14224_stream_829836720"></audio>
 				<div>
 					<img id="vinyl" src="images/vinyl.png" style="width: 8em;height:8em;">
@@ -56,9 +73,31 @@
 					<h4>Λίγα Λόγια Για Εμάς:</h4>
 					<div class="divider"></div>
 				</div>
-				<p class="flow-text line-height" onselectstart="return false;">
+				<p class="flow-text line-height">
 					Το Γενικό Λύκειο Λαυρίου ξεκινά την δοκιμαστική λειτουργία του διαδικτυακού του ραδιοφώνου. Ακούστε καθημερινά από τις 8:30 το πρωί μέχρι τις 22:00 το βράδυ. Το ραδιόφωνο βρίσκεται σε πειραματικό στάδιο. Θα λειτουργήσει κανονικά από τις 13/12/2021. Το Γενικό Λύκειο Λαυρίου , με την τωρινή του μορφή, ιδρύθηκε το 1976 και αρχικά συστεγαζόταν με το Γυμνάσιο Λαυρίου. Εντούτοις η ιστορική του διαδρομή ξεκινά το 1923-24 με την ίδρυση στο Λαύριο του Πρακτικού Λυκείου Λαυρίου. Βρίσκεται στην οδό Α. Κορδέλα 4, μέσα στην πόλη του Λαυρίου και στεγάζεται σε ένα τριώροφο κτήριο που κατασκευάσθηκε το 1987, μέσα σε περιφραγμένο χώρο 12 στρεμμάτων.
 				</p>
+			</div>
+
+			<!-- News -->
+			<div>
+				<div class="inline-block">
+					<h4>Νέα:</h4>
+					<div class="divider"></div>
+				</div>
+				<div class="container" style="margin-left: 2em;">
+					<?php 
+					foreach ($news as $neo) {	
+				 ?>
+				 <div>
+				 	<blockquote style="margin: 20px 0;padding-left: 1.5rem;border-left: 5px solid #ff7043;">
+				 		<h5 class="red-text text-accent-2"><?php echo $neo->title; ?></h5>
+				 	</blockquote>
+				 	<div style="margin-left: 1em;">
+				 		<?php echo $neo->content ?>
+				 	</div>
+				 </div>
+				<?php } ?>
+				</div>
 			</div>
 
 			<!-- Table of shows -->
@@ -72,7 +111,7 @@
 			<table class="striped">
 				<thead>
 					<tr>
-						<th>Ώρες:</th>
+						<th>Ώρες</th>
 						<th>Δευτέρα</th>
 						<th>Τρίτη</th>
 						<th>Τετάρτη</th>
@@ -81,56 +120,50 @@
 					</tr>
 				</thead>
 				<tbody>
+					<?php foreach ($programa as $mera) {
+					?>
 					<tr>
-						<td>9:00-10:00</td>
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Mornin' News</td> <!--Δευτέρα-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Dour News</td> <!--Τρίτη-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Late Mornin'News</td> <!--Τετάρτη-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Dour News</td> <!--Πέμπτη-->
-						<td class="tooltipped" data-tooltip="Well...it's self-explained! News! Morning News!! Late Morning News!!!! What else did you expect...?">Late Mornin'News</td> <!--Παρασκευή-->
-
+						<?php foreach ($mera as $index=>$ekpompi) {
+								if ($index == 0){
+									echo "<td style=\"font-weight: 700;\">{$ekpompi->title}</td>";
+									continue;
+								}
+								if ($ekpompi->title == "") {
+									echo "<td></td>";
+								}
+								elseif ($ekpompi->description == ""){
+									echo "<td>{$ekpompi->title}</td>";
+								}
+								else{
+									echo "<td class='tooltipped' data-tooltip='{$ekpompi->description}'>{$ekpompi->title}</td>";
+								}
+							}
+							?>
 					</tr>
-					<tr>
-						<td>10:00-11:00</td>
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Δε Couple</td> <!--Δευτέρα-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Show1</td> <!--Τρίτη-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Δε Couple</td> <!--Τετάρτη-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Unknown</td> <!--Πέμπτη-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Maybe Music?</td> <!--Παρασκευή-->
-
-					</tr>
-					<tr>
-						<td>11:00-12:00</td>
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Poro Pom Pom</td> <!--Δευτέρα-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Δε Couple</td> <!--Τρίτη-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Show 2</td> <!--Τετάρτη-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Lol</td> <!--Πέμπτη-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Definetely Music!</td> <!--Παρασκευή-->
-
-					</tr>
-					<tr>
-						<td>12:00-13:00</td>
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">After All Why Not Make A Website</td> <!--Δευτέρα-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Happy Easter!</td> <!--Τρίτη-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">?.?.?.?</td> <!--Τετάρτη-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Show 3</td> <!--Πέμπτη-->
-						<td class="tooltipped" data-tooltip="General Description Goes Here....">Absolutely Music!</td> <!--Παρασκευή-->
-
-					</tr>
+					<?php } ?>
 				</tbody>
 			</table>
 		</div>
 	</div>
 
-	<!-- Social Media -->
+	<!-- Social Media 
 	<div class="fixed-action-btn">
- 		<a class="btn-floating btn-large red">
+ 		<a class="btn-floating btn-large red waves-effect waves-light">
    			<i class="large material-icons">notifications</i>
   		</a>
   		<ul>
     		<li><a href="#" target="_self" class="btn-floating btn-large blue"><i class="fab fa-facebook-square"></i></a></li>
-    		<li><a href="#" target="_self" class="btn-floating btn-large instagram"><i class="fab fa-instagram"></i></a></li>
+    		<li><a href="https://instagram.com/lavrio_high_school_radio" target="_self" class="btn-floating btn-large instagram"><i class="fab fa-instagram"></i></a></li>
   		</ul>
+	</div>
+	-->
+	<!-- Social -->
+	<div class="fixed-top-right">
+		<h4 class="font-eroded-4em">Social</h4>
+		<div class="divider"></div>
+		<br>
+		<a href="#" target="_self" class="btn btn-large blue waves-effect waves-light" style="margin-right:1em;"><i class="fab fa-facebook-square" style="font-size: 2rem;"></i></a>
+		<a href="https://instagram.com/lavrio_high_school_radio" target="_self" class="btn btn-large instagram waves-effect waves-light"><i class="fab fa-instagram" style="font-size: 2rem;"></i></a>
 	</div>
 	<div style="margin-bottom:10em"></div>
 </body>
