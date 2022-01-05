@@ -112,26 +112,6 @@ blockquote{
 	font-size: 8em;
 }
 
-/*Carbon*/
-@font-face{
-	font-family: 'Carbon';
-	src: url('../fonts/Carbon.ttf');
-}
-.font-carbon{
-	font-family: Carbon;
-	font-size: 8em;
-}
-
-/*Dryme*/
-@font-face{
-	font-family: 'Dryme';
-	src: url('../fonts/Dryme.ttf');
-}
-.font-dryme{
-	font-family: Dryme;
-	font-size: 7em;
-}
-
 /*Eroded*/
 @font-face{
 	font-family: 'Eroded';

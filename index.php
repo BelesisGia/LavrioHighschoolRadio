@@ -90,10 +90,11 @@
 				 ?>
 				 <div>
 				 	<blockquote style="margin: 20px 0;padding-left: 1.5rem;border-left: 5px solid #ff7043;">
-				 		<h5 class="red-text text-accent-2"><?php echo $neo->title; ?></h5>
+				 		<h5 class="red-text text-accent-2"><?php echo htmlspecialchars($neo->title); ?></h5>
 				 	</blockquote>
-				 	<div style="margin-left: 1em;">
-				 		<?php echo $neo->content ?>
+				 	<div style="margin-left: 1em;font-size: 18px;">
+				 		<?php echo nl2br(htmlspecialchars($neo->content)); ?> <br>
+				 		<sub class="grey-text text-darken-2"><?php if(isset($neo->date)) echo $neo->date; ?></sub>
 				 	</div>
 				 </div>
 				<?php } ?>
