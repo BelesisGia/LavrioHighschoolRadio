@@ -46,6 +46,7 @@
 
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 	<script type="text/javascript">
@@ -57,7 +58,7 @@
 
 		document.addEventListener('DOMContentLoaded', function() {
 		    var elems = document.querySelectorAll('.modal');
-		    var instances = M.Modal.init(elems, null);
+		    var instances = M.Modal.init(elems, {dismissible: false});
 		});
 
 		function EditArticleModal(index){
@@ -154,6 +155,7 @@
 					</div>
 				</form>
 			</div>
+			<i class="material-icons modal-close" style="position: absolute;top: 1em;right: 1em;">close</i>
 		</div>
 
 		<!-- Edit Article Modal -->
@@ -178,6 +180,7 @@
 					</div>
 				</form>
 			</div>
+			<i class="material-icons modal-close" style="position: absolute;top: 1em;right: 1em;">close</i>
 		</div>
 	</div>
 
@@ -189,6 +192,7 @@
 		<ul>
 			<li><a class="btn waves-effect modal-trigger" href="#AddOP">Add Operator</a></li>
 			<li><a class="btn red waves-effect modal-trigger" href="#RemoveOP">Remove Operator</a></li>
+			<li><a class="btn blue waves-effect" href="./logout.php"><i class="material-icons" style="font-size: 1rem;padding: 0 2px 0 0">logout</i>Logout</a></li>
 		</ul>
 
 		<!-- Modal AddOP -->
@@ -208,6 +212,7 @@
 					</div>
 				</form>
 			</div>
+			<i class="material-icons modal-close" style="position: absolute;top: 1em;right: 1em;">close</i>
 		</div>
 
 		<!-- Modal RemoveOP -->
@@ -234,6 +239,7 @@
 					<?php } ?>
 				</ul>
 			</div>
+			<i class="material-icons modal-close" style="position: absolute;top: 1em;right: 1em;">close</i>
 		</div>
 	</div>
 </body>

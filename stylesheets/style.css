@@ -79,6 +79,12 @@ blockquote{
 	top: -0.9em;
 	right: -1.2em;
 }
+.title-decoration-mobile{
+	transform: scale(-0.3,0.3);
+	position: absolute;
+	top: -1em;
+	right: -0.15em;
+}
 
 .page-decoration-list{
 	margin: 0.2em 0px 4em 0px;

@@ -13,6 +13,7 @@
 	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
 	<meta charset="utf-8">
+    
 	<!-- Materialize Css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -28,7 +29,10 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/anim.css">
 </head>
 <body class="amber lighten-5">
-	<ul class="page-decoration-list unselectable">
+	<ul class="page-decoration-list unselectable" style="overflow-x: hidden;">
+		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
+		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
+		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
 		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
 		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
 		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
@@ -39,7 +43,8 @@
 		<div class="center-align unselectable">
 			<img src="images/microphone.png" style="margin: 0px 20px 0px 0px;">
 			<h1 class="font-watcher inline-block" style="margin: 2px 5px;position: relative;">
-				<img class="title-decoration" src="images/christmas-hat.png">
+				<img class="title-decoration hide-on-med-and-down" src="images/christmas-hat.png">
+				<img class="title-decoration-mobile hide-on-large-only" src="images/christmas-hat.png">
 				Lavrio Highschool Radio
 			</h1>
 		</div>
@@ -76,6 +81,17 @@
 				<p class="flow-text line-height">
 					Το Γενικό Λύκειο Λαυρίου ξεκινά την δοκιμαστική λειτουργία του διαδικτυακού του ραδιοφώνου. Ακούστε καθημερινά από τις 8:30 το πρωί μέχρι τις 22:00 το βράδυ. Το ραδιόφωνο βρίσκεται σε πειραματικό στάδιο. Θα λειτουργήσει κανονικά από τις 13/12/2021. Το Γενικό Λύκειο Λαυρίου , με την τωρινή του μορφή, ιδρύθηκε το 1976 και αρχικά συστεγαζόταν με το Γυμνάσιο Λαυρίου. Εντούτοις η ιστορική του διαδρομή ξεκινά το 1923-24 με την ίδρυση στο Λαύριο του Πρακτικού Λυκείου Λαυρίου. Βρίσκεται στην οδό Α. Κορδέλα 4, μέσα στην πόλη του Λαυρίου και στεγάζεται σε ένα τριώροφο κτήριο που κατασκευάσθηκε το 1987, μέσα σε περιφραγμένο χώρο 12 στρεμμάτων.
 				</p>
+			</div>
+
+			<!-- Social [Mobile Only]-->
+			<div class="hide-on-large-only">
+				<div class="inline-block">
+					<h4 class="font-eroded-4em inline-block">Social</h4>
+					<div class="divider" style="margin-bottom: 1em;"></div>
+				</div>
+				<br>
+				<a href="#" target="_self" class="btn btn-large blue waves-effect waves-light" style="margin-right:1em;"><i class="fab fa-facebook-square" style="font-size: 2rem;"></i></a>
+				<a href="https://instagram.com/lavrio_high_school_radio" target="_self" class="btn btn-large instagram waves-effect waves-light"><i class="fab fa-instagram" style="font-size: 2rem;"></i></a>
 			</div>
 
 			<!-- News -->
@@ -146,20 +162,9 @@
 			</table>
 		</div>
 	</div>
-
-	<!-- Social Media 
-	<div class="fixed-action-btn">
- 		<a class="btn-floating btn-large red waves-effect waves-light">
-   			<i class="large material-icons">notifications</i>
-  		</a>
-  		<ul>
-    		<li><a href="#" target="_self" class="btn-floating btn-large blue"><i class="fab fa-facebook-square"></i></a></li>
-    		<li><a href="https://instagram.com/lavrio_high_school_radio" target="_self" class="btn-floating btn-large instagram"><i class="fab fa-instagram"></i></a></li>
-  		</ul>
-	</div>
-	-->
-	<!-- Social -->
-	<div class="fixed-top-right">
+	
+	<!-- Social [Desktop Only]-->
+	<div class="fixed-top-right hide-on-med-and-down">
 		<h4 class="font-eroded-4em">Social</h4>
 		<div class="divider"></div>
 		<br>

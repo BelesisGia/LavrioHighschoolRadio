@@ -6,11 +6,11 @@
     },
     {
         "title": "Web Tools Are Here!!!",
-        "content": "Αν είστε μέλος της ομάδας μας, μπορείτε να επεξεργαστείτε την σελίδα γράφοντας στο τέλος του URL: \"\/webtools\/login.php\""
+        "content": "Mπορείτε να επεξεργαστείτε την σελίδα γράφοντας στο τέλος του URL: \"\/webtools\/login.php\""
     },
     {
         "title": "Xss Test",
-        "content": "<script>\r\nwindow.alert('hello');\r\nwindow.location.href = \"https:\/\/google.com\";\r\n<\/script>"
+        "content": "<script>\r\nwindow.alert('hello');\r\n<\/script>"
     },
     {
         "title": "Καινούργια Ιστοσελίδα!",
