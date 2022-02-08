@@ -23,12 +23,15 @@
 
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <!-- Special Decorations -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/decorations.css">
     <!--Page.js-->
     <script src="page.js"></script>
     <!--Anim.css-->
     <link rel="stylesheet" type="text/css" href="stylesheets/anim.css">
 </head>
 <body class="amber lighten-5">
+	<!--
 	<ul class="page-decoration-list unselectable" style="overflow-x: hidden;">
 		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
 		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
@@ -38,13 +41,19 @@
 		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
 		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
 	</ul>
+	-->
 	<div>
 		<!-- Title -->
 		<div class="center-align unselectable">
 			<img src="images/microphone.png" style="margin: 0px 20px 0px 0px;">
 			<h1 class="font-watcher inline-block" style="margin: 2px 5px;position: relative;">
+				<!-- Valentine's Day Decoration -->
+				<img class="valentines-title hide-on-med-and-down" src="images/hearts.png">
+				<img class="valentines-title-mobile hide-on-large-only" src="images/hearts.png">
+				<!--
 				<img class="title-decoration hide-on-med-and-down" src="images/christmas-hat.png">
 				<img class="title-decoration-mobile hide-on-large-only" src="images/christmas-hat.png">
+				-->
 				Lavrio Highschool Radio
 			</h1>
 		</div>
@@ -86,7 +95,7 @@
 			<!-- Social [Mobile Only]-->
 			<div class="hide-on-large-only">
 				<div class="inline-block">
-					<h4 class="font-eroded-4em inline-block">Social</h4>
+					<h4 class="font-eroded-4em inline-block">Social <img class="valentines-social" src="images/chocolate.png"></h4>
 					<div class="divider" style="margin-bottom: 1em;"></div>
 				</div>
 				<br>
@@ -161,11 +170,15 @@
 				</tbody>
 			</table>
 		</div>
+		<!-- Footer -->
+		<div class="container" style="margin-top: 2em;">
+			<h6 class="grey-text">Website made by: Mpelesis</h6>
+		</div>
 	</div>
 	
 	<!-- Social [Desktop Only]-->
 	<div class="fixed-top-right hide-on-med-and-down">
-		<h4 class="font-eroded-4em">Social</h4>
+		<h4 class="font-eroded-4em">Social <img class="valentines-social" src="images/chocolate.png"></h4>
 		<div class="divider"></div>
 		<br>
 		<a href="#" target="_self" class="btn btn-large blue waves-effect waves-light" style="margin-right:1em;"><i class="fab fa-facebook-square" style="font-size: 2rem;"></i></a>

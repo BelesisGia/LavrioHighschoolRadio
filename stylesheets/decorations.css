@@ -1,0 +1,20 @@
+
+/*Valentine's Day Decorations*/
+.valentines-title{
+	transform: rotate(15deg);
+	position: absolute;
+	top: 0em;
+	right: -0.8em;
+}
+
+.valentines-title-mobile{
+	transform: rotate(15deg);
+	position: absolute;
+	top: 0em;
+	right: 0.3em;
+}
+
+.valentines-social{
+	transform: rotate(-13deg) scale(0.9);
+	margin-left: -18px;
+}

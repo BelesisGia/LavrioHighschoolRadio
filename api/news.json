@@ -1,5 +1,10 @@
 [
     {
+        "title": "Well, All Seems Fine...",
+        "content": "Yep just fine :)",
+        "date": "08\/02\/2022"
+    },
+    {
         "title": ":(",
         "content": "me is sad today...",
         "date": "05\/01\/2022"
@@ -10,15 +15,11 @@
     },
     {
         "title": "Xss Test",
-        "content": "<script>\r\nwindow.alert('hello');\r\n<\/script>"
+        "content": "<script>\r\nwindow.alert('If this shows up something is bad! :\\');\r\n<\/script>"
     },
     {
         "title": "Καινούργια Ιστοσελίδα!",
         "content": "Σε περίπτωση, λέμε τώρα, που δεν κατάλαβες ότι αυτή η σελίδα είναι καινούργια... ορίστε, καινούργια σελίδα!"
-    },
-    {
-        "title": "Τίποτα...",
-        "content": "Ναι, απλά τίποτα"
     },
     {
         "title": "Μπλα Μπλα...",
