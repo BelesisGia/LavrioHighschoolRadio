@@ -56,6 +56,9 @@
 				-->
 				Lavrio Highschool Radio
 			</h1>
+			
+			<h4 class="sub-title font-valentday-5em">Happy Valentine's Day</h4>
+			<!--<h4 class="sub-title font-valentday-5em">Listen 24/7</h4>-->
 		</div>
 		<!-- CONTENT -->
 		<div class="container">
@@ -99,8 +102,7 @@
 					<div class="divider" style="margin-bottom: 1em;"></div>
 				</div>
 				<br>
-				<a href="#" target="_self" class="btn btn-large blue waves-effect waves-light" style="margin-right:1em;"><i class="fab fa-facebook-square" style="font-size: 2rem;"></i></a>
-				<a href="https://instagram.com/lavrio_high_school_radio" target="_self" class="btn btn-large instagram waves-effect waves-light"><i class="fab fa-instagram" style="font-size: 2rem;"></i></a>
+				<?php include('social_links.html'); ?>
 			</div>
 
 			<!-- News -->
@@ -181,8 +183,7 @@
 		<h4 class="font-eroded-4em">Social <img class="valentines-social" src="images/chocolate.png"></h4>
 		<div class="divider"></div>
 		<br>
-		<a href="#" target="_self" class="btn btn-large blue waves-effect waves-light" style="margin-right:1em;"><i class="fab fa-facebook-square" style="font-size: 2rem;"></i></a>
-		<a href="https://instagram.com/lavrio_high_school_radio" target="_self" class="btn btn-large instagram waves-effect waves-light"><i class="fab fa-instagram" style="font-size: 2rem;"></i></a>
+		<?php include('social_links.html'); ?>
 	</div>
 	<div style="margin-bottom:10em"></div>
 </body>
