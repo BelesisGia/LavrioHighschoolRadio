@@ -114,6 +114,14 @@ blockquote{
 	height: 5em;
 }
 
+.card-content{
+	padding: 12px !important;
+}
+
+.materialboxed{
+	cursor: pointer;
+}
+
 /* ----- Fonts ----- */
 
 /*Motion*/

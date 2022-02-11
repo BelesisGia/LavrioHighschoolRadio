@@ -18,6 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems, null);
+  });
+
+//Stream
+
 document.addEventListener('DOMContentLoaded',function(){
 	document.getElementById('_Stream').volume = 0.5;
 });

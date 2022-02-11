@@ -88,4 +88,63 @@
 			file_put_contents('ops.json', $json);
 		}
 	}
+
+	class Ekpompes{
+		public static function Add($title,$description){
+			if (empty($title) || empty($description)){
+				return;
+			}
+
+			$ekpompes = json_decode(file_get_contents('../api/ekpompes.json'),true);
+			$ekpompes[$title] = $description;
+
+			$json = json_encode($ekpompes,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+			file_put_contents('../api/ekpompes.json', $json);
+		}
+
+		public static function Edit($title,$description){
+			if (empty($title) || empty($description)){
+				return;
+			}
+			$ekpompes = json_decode(file_get_contents('../api/ekpompes.json'),true);
+
+			$ekpompes[$title] = $description;
+
+			$json = json_encode($ekpompes,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+			file_put_contents('../api/ekpompes.json', $json);
+		}
+
+		public static function Remove($title){
+			if (empty($title)) return;
+
+			$ekpompes = json_decode(file_get_contents('../api/ekpompes.json'),true);
+			unset($ekpompes[$title]);
+
+			$json = json_encode($ekpompes,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+			file_put_contents('../api/ekpompes.json', $json);
+		}
+	}
+
+	class Schedule{
+		public static function Change($title,$mera,$hour){
+			if (!isset($title) || empty($mera) || !isset($hour)){
+				return;
+			}
+
+			$programma = json_decode(file_get_contents('../api/programma.json'));
+			$days = (array)$programma->days;
+
+			$count = count($days[$mera]);
+			if ($hour > $count - 1){
+				for ($i=$count; $i < $hour; $i++) { 
+					$days[$mera][$i] = "";
+				}
+			}
+			$days[$mera][$hour] = $title;
+
+			$programma2 = (object) ["hours" => $programma->hours,"days" => $days];
+			$json = json_encode($programma2,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+			file_put_contents('../api/programma.json', $json);
+		}
+	}
 ?>

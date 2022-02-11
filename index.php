@@ -1,9 +1,6 @@
 <?php 
-	$programa_file = fopen('api/programa.json', 'r');
-	$programa = json_decode(fread($programa_file, filesize('api/programa.json')));
-
 	$news_file = fopen('api/news.json', 'r');
-	$news = json_decode(fread($news_file, filesize('api/programa.json')));
+	$news = json_decode(fread($news_file, filesize('api/news.json')));
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +67,7 @@
 			</h4>
 			<!-- Stream Listener -->
 			<div class="unselectable">
-				<audio id="_Stream" src="https://freeuk23.listen2myradio.com/live.mp3?typeportmount=s1_14224_stream_829836720"></audio>
+				<audio id="_Stream" src="https://freeuk30.listen2myradio.com/live.mp3?typeportmount=s1_28014_stream_286833095"></audio>
 				<div>
 					<img id="vinyl" src="images/vinyl.png" style="width: 8em;height:8em;">
 					<!--Controls-->
@@ -129,58 +126,95 @@
 			</div>
 
 			<!-- Table of shows -->
-			<div class="inline-block">
-				<h4>Πρόγραμμα Εκπομπών:</h4>
-				<div class="divider"></div>
-				<blockquote>
-					Πατήστε το όνομα της εκπομπής για περιγραφή.
-				</blockquote>
+			<div>
+				<div class="inline-block">
+					<h4>Πρόγραμμα Εκπομπών:</h4>
+					<div class="divider"></div>
+					<blockquote>
+						Πατήστε το όνομα της εκπομπής για περιγραφή.
+					</blockquote>
+				</div>
+				<table class="striped">
+					<thead>
+						<tr>
+							<th>Ώρες</th>
+							<th>Δευτέρα</th>
+							<th>Τρίτη</th>
+							<th>Τετάρτη</th>
+							<th>Πέμπτη</th>
+							<th>Παρασκευή</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php 
+							$ekpompes = json_decode(file_get_contents('./api/ekpompes.json'),true);
+							$programma_file = json_decode(file_get_contents('./api/programma.json'));
+							$hours = $programma_file->hours;
+							$meres = $programma_file->days;
+						?>
+
+						<?php foreach ($hours as $index => $hour) { ?>
+							<tr>
+								<td style="font-weight: 700;"><?php echo $hour; ?></td>
+								<?php foreach ($meres as $key => $mera) {
+									if (isset(((array)$mera)[$index])){
+										$ekpompi = ((array)$mera)[$index];
+										if (empty($ekpompi)){
+											echo "<td></td>";
+										}
+										elseif (empty($ekpompes[$ekpompi])){
+											echo "<td>{$ekpompi}</td>";
+										}else{
+											echo "<td class='tooltipped' data-tooltip='{$ekpompes[$ekpompi]}'>{$ekpompi
+											}</td>";
+										}
+									}
+									else{
+										echo "<td></td>";
+									}
+								} ?>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
 			</div>
-			<table class="striped">
-				<thead>
-					<tr>
-						<th>Ώρες</th>
-						<th>Δευτέρα</th>
-						<th>Τρίτη</th>
-						<th>Τετάρτη</th>
-						<th>Πέμπτη</th>
-						<th>Παρασκευή</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($programa as $mera) {
+
+			<!-- Meet Us -->
+			<div>
+				<div class="inline-block">
+					<h4>Γνωρίστε μας:</h4>
+					<div class="divider"></div>
+				</div>
+				<div class="row">
+					<?php 
+						$paths = scandir('./images/meet_us/');
+						$images = array_diff($paths, array('.','..'));
+						foreach ($images as $image) { ?>
+							<div class="col s12 m3">
+								<div class="card">
+									<div class="card-image">
+										<img class="materialboxed" src=<?php echo '\''."./images/meet_us/$image".'\''; ?>>
+									</div>
+									<div class="card-content">
+										<h6><?php echo pathinfo($image, PATHINFO_FILENAME); ?></h6>
+									</div>
+								</div>          
+							</div>
+						<?php }
 					?>
-					<tr>
-						<?php foreach ($mera as $index=>$ekpompi) {
-								if ($index == 0){
-									echo "<td style=\"font-weight: 700;\">{$ekpompi->title}</td>";
-									continue;
-								}
-								if ($ekpompi->title == "") {
-									echo "<td></td>";
-								}
-								elseif ($ekpompi->description == ""){
-									echo "<td>{$ekpompi->title}</td>";
-								}
-								else{
-									echo "<td class='tooltipped' data-tooltip='{$ekpompi->description}'>{$ekpompi->title}</td>";
-								}
-							}
-							?>
-					</tr>
-					<?php } ?>
-				</tbody>
-			</table>
+				</div>
+			</div>
+
 		</div>
 		<!-- Footer -->
 		<div class="container" style="margin-top: 2em;">
-			<h6 class="grey-text">Website made by: Mpelesis</h6>
+			<h6 class="grey-text">Website made by: <a class="red-text" href="https://instagram.com/mpelesis.exe/">Mpelesis</a></h6>
 		</div>
 	</div>
 	
 	<!-- Social [Desktop Only]-->
 	<div class="fixed-top-right hide-on-med-and-down">
-		<h4 class="font-eroded-4em">Social <img class="valentines-social" src="images/chocolate.png"></h4>
+		<h4 class="font-eroded-4em">Social</h4>
 		<div class="divider"></div>
 		<br>
 		<?php include('social_links.html'); ?>
