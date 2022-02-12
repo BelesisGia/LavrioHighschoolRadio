@@ -91,7 +91,7 @@
 
 	class Ekpompes{
 		public static function Add($title,$description){
-			if (empty($title) || empty($description)){
+			if (empty($title)){
 				return;
 			}
 
@@ -103,7 +103,7 @@
 		}
 
 		public static function Edit($title,$description){
-			if (empty($title) || empty($description)){
+			if (empty($title)){
 				return;
 			}
 			$ekpompes = json_decode(file_get_contents('../api/ekpompes.json'),true);
@@ -143,6 +143,51 @@
 			$days[$mera][$hour] = $title;
 
 			$programma2 = (object) ["hours" => $programma->hours,"days" => $days];
+			$json = json_encode($programma2,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+			file_put_contents('../api/programma.json', $json);
+		}
+
+		public static function AddRow($_hours){
+			if (empty($_hours)) return;
+
+			$programma = json_decode(file_get_contents('../api/programma.json'));
+			$hours = (array)$programma->hours;
+			$hours[] = $_hours;
+
+			$programma2 = (object) ["hours" => $hours,"days" => $programma->days];
+			$json = json_encode($programma2,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+			file_put_contents('../api/programma.json', $json);
+		}
+
+		public static function EditHours($index,$_hours){
+			if (empty($_hours)) return;
+
+			$programma = json_decode(file_get_contents('../api/programma.json'));
+			$hours = (array)$programma->hours;
+			$hours[$index] = $_hours;
+
+			$programma2 = (object) ["hours" => $hours,"days" => $programma->days];
+			$json = json_encode($programma2,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+			file_put_contents('../api/programma.json', $json);
+		}
+
+		public static function DeleteRow($index){
+			$programma = json_decode(file_get_contents('../api/programma.json'));
+			$hours = (array)$programma->hours;
+			$days = (array)$programma->days;
+			
+			unset($hours[$index]);
+			foreach ($days as $key => $mera) {
+				$day_count = count($mera);
+				$hour_count = count($hours);
+				if ($day_count > $hour_count){
+					for ($i=$hour_count; $i < $day_count; $i++) { 
+						unset($days[$key][$i]);
+					}
+				}
+			}
+
+			$programma2 = (object) ["hours" => $hours,"days" => $days];
 			$json = json_encode($programma2,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
 			file_put_contents('../api/programma.json', $json);
 		}

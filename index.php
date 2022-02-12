@@ -82,7 +82,7 @@
 			</div>
 
 			<!-- Abous Us -->
-			<div>
+			<div id="about" class="scrollspy">
 				<div class="inline-block">
 					<h4>Λίγα Λόγια Για Εμάς:</h4>
 					<div class="divider"></div>
@@ -95,7 +95,7 @@
 			<!-- Social [Mobile Only]-->
 			<div class="hide-on-large-only">
 				<div class="inline-block">
-					<h4 class="font-eroded-4em inline-block">Social <img class="valentines-social" src="images/chocolate.png"></h4>
+					<h4 class="font-eroded-4em inline-block">Social</h4>
 					<div class="divider" style="margin-bottom: 1em;"></div>
 				</div>
 				<br>
@@ -103,7 +103,7 @@
 			</div>
 
 			<!-- News -->
-			<div>
+			<div id="news" class="scrollspy">
 				<div class="inline-block">
 					<h4>Νέα:</h4>
 					<div class="divider"></div>
@@ -125,8 +125,8 @@
 				</div>
 			</div>
 
-			<!-- Table of shows -->
-			<div>
+			<!-- Programma -->
+			<div id="programma" class="scrollspy">
 				<div class="inline-block">
 					<h4>Πρόγραμμα Εκπομπών:</h4>
 					<div class="divider"></div>
@@ -160,7 +160,7 @@
 									if (isset(((array)$mera)[$index])){
 										$ekpompi = ((array)$mera)[$index];
 										if (empty($ekpompi)){
-											echo "<td></td>";
+											echo "<td>--</td>";
 										}
 										elseif (empty($ekpompes[$ekpompi])){
 											echo "<td>{$ekpompi}</td>";
@@ -170,7 +170,7 @@
 										}
 									}
 									else{
-										echo "<td></td>";
+										echo "<td>--</td>";
 									}
 								} ?>
 							</tr>
@@ -180,7 +180,7 @@
 			</div>
 
 			<!-- Meet Us -->
-			<div>
+			<div id="meet_us" class="scrollspy">
 				<div class="inline-block">
 					<h4>Γνωρίστε μας:</h4>
 					<div class="divider"></div>
@@ -212,13 +212,28 @@
 		</div>
 	</div>
 	
-	<!-- Social [Desktop Only]-->
-	<div class="fixed-top-right hide-on-med-and-down">
-		<h4 class="font-eroded-4em">Social</h4>
-		<div class="divider"></div>
-		<br>
-		<?php include('social_links.html'); ?>
+	<!--Fixed Top Right -->
+	<div class="fixed-top-right">
+		<!-- Table Of Contents -->
+		<div class="hide-on-med-and-down">
+			<h4 class="font-eroded-4em">Menu</h4>
+			<div class="divider"></div>
+			<ul class="table-of-contents">
+				<li><a href="#about">About</a></li>
+				<li><a href="#news">Νέα</a></li>
+				<li><a href="#programma">Πρόγραμμα</a></li>
+				<li><a href="#meet_us">Γνωρίστε Μας</a></li>
+			</ul>
+		</div>
+		<!-- Social [Desktop Only]-->
+		<div class="hide-on-med-and-down">
+			<h4 class="font-eroded-4em">Social</h4>
+			<div class="divider"></div>
+			<br>
+			<?php include('social_links.html'); ?>
+		</div>
 	</div>
+
 	<div style="margin-bottom:10em"></div>
 </body>
 </html>

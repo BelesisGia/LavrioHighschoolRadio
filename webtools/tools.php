@@ -24,6 +24,24 @@
 		}
 		else NewsArticles::EditArticle($_POST['index'],$_POST['title'],$_POST['content'],false);
 	}
+
+	//Action changeSchedule
+	if (isset($_POST['action']) && $_POST['action'] == 'changeSchedule'){
+		Schedule::Change($_POST['title'],$_POST['mera'],$_POST['hour']);
+	}
+	//Action addScheduleRow
+	if (isset($_POST['action']) && $_POST['action'] == 'addScheduleRow'){
+		Schedule::AddRow($_POST['hours']);
+	}
+	//Action editScheduleHours
+	if (isset($_POST['action']) && $_POST['action'] == 'editScheduleHours'){
+		Schedule::EditHours($_POST['index'],$_POST['hours']);
+	}
+	//Action deleteScheduleRow
+	if (isset($_POST['action']) && $_POST['action'] == 'deleteScheduleRow'){
+		Schedule::DeleteRow($_POST['index']);
+	} 
+
 	//Action AddEkpompi
 	if (isset($_POST['action']) && $_POST['action'] == 'addEkpompi'){
 		Ekpompes::Add($_POST['title'],$_POST['description']);
@@ -35,10 +53,6 @@
 	//Action editEkpompi
 	if (isset($_POST['action']) && $_POST['action'] == 'editEkpompi'){
 		Ekpompes::Edit($_POST['title'],$_POST['description']);
-	}
-	//Action changeSchedule
-	if (isset($_POST['action']) && $_POST['action'] == 'changeSchedule'){
-		Schedule::Change($_POST['title'],$_POST['mera'],$_POST['hour']);
 	}
 	//Action RemoveOP
 	if (isset($_POST['action']) && $_POST['action'] == 'RemoveOP'){
@@ -129,6 +143,15 @@
 			title.value = _title;
 			document.getElementById('changeScheduleForm').submit();
 		}
+		function EditScheduleHoursForm(_index,_hours){
+			var hours = document.getElementById('editScheduleHours_Hours');
+
+			var indexes = document.querySelectorAll('[id=editScheduleHours_Index]');
+			hours.value = _hours;
+			for (var i = 0; i < indexes.length; i++) {
+				indexes[i].value = _index;
+			}
+		}
 	</script>
 	<style type="text/css">
 		label{
@@ -166,7 +189,6 @@
 			color: #009688;
 			cursor: pointer;
 		}
-
 	</style>
 </head>
 <body style="padding: 5em;" class="amber lighten-5">
@@ -278,7 +300,13 @@
 
 					<?php foreach ($hours as $index => $hour) { ?>
 						<tr>
-							<td style="font-weight: 700;"><?php echo $hour; ?></td>
+							<td style="font-weight: 700;">
+								<a href="#editScheduleHours" class="modal-trigger" onclick="EditScheduleHoursForm(<?php echo $index; ?>,<?php echo "'$hour'" ?>)">
+									<span style="cursor: pointer;" class="tooltipped" data-tooltip='<span style="color:#8bc34a;">Edit</span>'>
+										<?php echo $hour; ?>
+									</span>
+								</a>
+							</td>
 							<?php foreach ($meres as $key => $mera) {
 								if (isset(((array)$mera)[$index])){
 									$ekpompi = ((array)$mera)[$index];
@@ -306,6 +334,79 @@
 					<?php } ?>
 				</tbody>
 			</table>
+			<a href="#addScheduleRow" class="modal-trigger" style="margin-left: 1em;color:grey;">Add Row</a>
+
+			<!-- Edit Schedule Modal -->
+			<div class="modal" id="editSchedule">
+				<div class="modal-content container">
+					<h4 class="center" style="margin-bottom: 2em;">Change Schedule</h4>
+					<ul class="center">
+						<li>
+							<h5>
+								<a class="dropmenu" onclick="SubmitEditScheduleForm(<?php echo '\'\''; ?>)">
+									--
+								</a>
+							</h5>
+						</li>
+						<?php foreach ($ekpompes as $key => $value) { ?>
+							<li>
+								<h5><a class="dropmenu" onclick="SubmitEditScheduleForm(<?php echo '\''.htmlspecialchars($key).'\''; ?>)"><?php echo htmlspecialchars($key);?></a></h5>
+							</li>
+						<?php } ?>
+					</ul>
+					<form method="post" id="changeScheduleForm">
+						<input type="hidden" name="action" value="changeSchedule">
+
+						<input type="hidden" name="title" id="editScheduleTitle">
+						<input type="hidden" name="mera" id="editScheduleMera">
+						<input type="hidden" name="hour" id="editScheduleHour">
+					</form>
+				</div>
+				<i class="material-icons modal-close" style="position: absolute;top: 1em;right: 1em;">close</i>
+			</div>
+
+			<!-- Edit Schedule Hours Modal -->
+			<div class="modal" id="editScheduleHours" style="width: 30%;">
+				<div class="modal-content container">
+					<h4 class="center" style="margin-bottom: 2em;">Edit Hours</h4>
+					<form method="post" autocomplete="off">
+						<input type="hidden" name="action" value="editScheduleHours">
+						<input type="hidden" name="index" id="editScheduleHours_Index">
+						<label>Hours:</label>
+						<input type="text" name="hours" id="editScheduleHours_Hours">
+						<div style="margin: 4em;"></div>
+						<div class="center">
+							<button class="btn">Update</button>
+						</div>
+					</form>
+					<div style="margin: 2em;"></div>
+					<form method="post">
+						<input type="hidden" name="action" value="deleteScheduleRow">
+						<input type="hidden" name="index" id="editScheduleHours_Index">
+						<div class="center">
+							<button class="btn red">Delete Row</button>
+						</div>
+					</form>
+				</div>
+				<i class="material-icons modal-close" style="position: absolute;top: 1em;right: 1em;">close</i>
+			</div>
+
+			<!-- Add Schedule Row Modal -->
+			<div class="modal" id="addScheduleRow" style="width: 30%;">
+				<div class="modal-content container">
+					<h4 class="center" style="margin-bottom: 4em;">Add Row</h4>
+					<form method="post" autocomplete="off">
+						<input type="hidden" name="action" value="addScheduleRow">
+						<label>Hours:</label>
+						<input type="text" name="hours">
+						<div style="margin: 2em;"></div>
+						<div class="center">
+							<button class="btn">Add</button>
+						</div>
+					</form>
+				</div>
+				<i class="material-icons modal-close" style="position: absolute;top: 1em;right: 1em;">close</i>
+			</div>
 
 			<!-- Ekpompes -->
 			<h4>Ekpompes:</h4>
@@ -365,39 +466,10 @@
 				</div>
 				<i class="material-icons modal-close" style="position: absolute;top: 1em;right: 1em;">close</i>
 			</div>
-
-			<!-- Edit Schedule Modal -->
-			<div class="modal" id="editSchedule">
-				<div class="modal-content container">
-					<h4 class="center" style="margin-bottom: 2em;">Change Schedule</h4>
-					<ul class="center">
-						<li>
-							<h5>
-								<a class="dropmenu" onclick="SubmitEditScheduleForm(<?php echo '\'\''; ?>)">
-									--
-								</a>
-							</h5>
-						</li>
-						<?php foreach ($ekpompes as $key => $value) { ?>
-							<li>
-								<h5><a class="dropmenu" onclick="SubmitEditScheduleForm(<?php echo '\''.htmlspecialchars($key).'\''; ?>)"><?php echo htmlspecialchars($key);?></a></h5>
-							</li>
-						<?php } ?>
-					</ul>
-					<form method="post" id="changeScheduleForm">
-						<input type="hidden" name="action" value="changeSchedule">
-
-						<input type="hidden" name="title" id="editScheduleTitle">
-						<input type="hidden" name="mera" id="editScheduleMera">
-						<input type="hidden" name="hour" id="editScheduleHour">
-					</form>
-				</div>
-				<i class="material-icons modal-close" style="position: absolute;top: 1em;right: 1em;">close</i>
-			</div>
 		</div>
 
 		<!-- Admin Commands -->
-		<div class="container col s4 right" style="width: 20%;">
+		<div class="container col s4 right" style="width: 15%;">
 			<h4>Admin Commands:</h4>
 			<div class="divider"></div>
 			<div style="margin: 1em;"></div>

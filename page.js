@@ -1,13 +1,4 @@
-//Init
-document.addEventListener('DOMContentLoaded', function() {
-
-	var elems = document.querySelectorAll('.fixed-action-btn');
-	var instances = M.FloatingActionButton.init(elems, {
-		direction: 'left',
-		hoverEnabled: false
-	});
-});
-
+//Tooltips
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.tooltipped');
     var instances = M.Tooltip.init(elems, {
@@ -18,23 +9,41 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+//MaterialBox
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.materialboxed');
     var instances = M.Materialbox.init(elems, null);
   });
 
-//Stream
+//ScrollSpy
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.scrollspy');
+    var instances = M.ScrollSpy.init(elems, {
+        activeClass: 'scrollspy-active',
+        scrollOffset: 600
+    });
+  });
 
+//Stream
 document.addEventListener('DOMContentLoaded',function(){
-	document.getElementById('_Stream').volume = 0.5;
+	_('_Stream').volume = 0.5;
 });
 
 function _StreamPlay(){
-	document.getElementById('_Stream').play();
-	document.getElementById('vinyl').classList.add('rotating');
+	_('_Stream').play();
+	_('vinyl').classList.add('rotating');
 }
 
 function _StreamStop(){
-	document.getElementById('_Stream').pause();
-	document.getElementById('vinyl').classList.remove('rotating');
+	_('_Stream').pause();
+	_('vinyl').classList.remove('rotating');
+}
+
+//Scroll
+function ScrollToView(_id){
+    _(_id).scrollIntoView({behavior:'smooth'});
+}
+
+function _(el) {
+  return document.getElementById(el);
 }
