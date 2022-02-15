@@ -1,6 +1,8 @@
 <?php 
 	$news_file = fopen('api/news.json', 'r');
 	$news = json_decode(fread($news_file, filesize('api/news.json')));
+
+	$SETTINGS = json_decode(file_get_contents('./api/settings.json'));
 ?>
 
 <!DOCTYPE html>
@@ -28,34 +30,44 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/anim.css">
 </head>
 <body class="amber lighten-5">
-	<!--
-	<ul class="page-decoration-list unselectable" style="overflow-x: hidden;">
-		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
-		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
-		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
-		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
-		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
-		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
-		<li><img class="page-decoration" src="images/page-decoration2.png"></li>
-	</ul>
-	-->
+	<?php if ($SETTINGS->decoration == 1){ ?>
+		<ul class="christmas-decoration-list unselectable" style="overflow-x: hidden;">
+			<li><img class="christmas-decoration" src="images/page-decoration2.png"></li>
+			<li><img class="christmas-decoration" src="images/page-decoration2.png"></li>
+			<li><img class="christmas-decoration" src="images/page-decoration2.png"></li>
+			<li><img class="christmas-decoration" src="images/page-decoration2.png"></li>
+			<li><img class="christmas-decoration" src="images/page-decoration2.png"></li>
+			<li><img class="christmas-decoration" src="images/page-decoration2.png"></li>
+			<li><img class="christmas-decoration" src="images/page-decoration2.png"></li>
+		</ul>
+	<?php } ?>
 	<div>
 		<!-- Title -->
 		<div class="center-align unselectable">
 			<img src="images/microphone.png" style="margin: 0px 20px 0px 0px;">
 			<h1 class="font-watcher inline-block" style="margin: 2px 5px;position: relative;">
-				<!-- Valentine's Day Decoration -->
-				<img class="valentines-title hide-on-med-and-down" src="images/hearts.png">
-				<img class="valentines-title-mobile hide-on-large-only" src="images/hearts.png">
-				<!--
-				<img class="title-decoration hide-on-med-and-down" src="images/christmas-hat.png">
-				<img class="title-decoration-mobile hide-on-large-only" src="images/christmas-hat.png">
-				-->
+
+				<?php if ($SETTINGS->decoration == 1){ ?>
+					<!-- Christmas Decoration -->
+					<img class="christmas-title hide-on-med-and-down" src="images/christmas-hat.png">
+					<img class="christmas-title-mobile hide-on-large-only" src="images/christmas-hat.png">
+				<?php }
+					elseif ($SETTINGS->decoration == 2) { ?>
+					<!-- Valentine's Day Decoration -->
+					<img class="valentines-title hide-on-med-and-down" src="images/hearts.png">
+					<img class="valentines-title-mobile hide-on-large-only" src="images/hearts.png">
+				<?php } ?>
 				Lavrio Highschool Radio
 			</h1>
-			
-			<h4 class="sub-title font-valentday-5em">Happy Valentine's Day</h4>
-			<!--<h4 class="sub-title font-valentday-5em">Listen 24/7</h4>-->
+			<?php if ($SETTINGS->decoration == 1){ ?>
+				<h4 class="sub-title font-valentday-5em">Merry Christmas</h4>
+			<?php }
+				elseif ($SETTINGS->decoration == 2){ ?>
+				<h4 class="sub-title font-valentday-5em">Happy Valentine's Day</h4>
+			<?php }
+				else { ?>
+				<h4 class="sub-title font-valentday-5em">Listen 24/7</h4>
+			<?php } ?>
 		</div>
 		<!-- CONTENT -->
 		<div class="container">

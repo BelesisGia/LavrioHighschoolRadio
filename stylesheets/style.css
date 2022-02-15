@@ -101,42 +101,8 @@ blockquote{
 	cursor: pointer;
 }
 
-/* Page Decorations */
-.title-decoration{
-	transform: scale(-0.3,0.3);
-	position: absolute;
-	top: -0.9em;
-	right: -1.2em;
-}
-.title-decoration-mobile{
-	transform: scale(-0.3,0.3);
-	position: absolute;
-	top: -1em;
-	right: -0.15em;
-}
-
 .sub-title{
 	margin: 0em 1em;
-}
-
-.page-decoration-list{
-	margin: 0.2em 0px 4em 0px;
-	padding: 0;
-	white-space: nowrap;
-}
-.page-decoration-list>li{
-	display: inline-block;
-	margin: -0.25em;
-}
-.page-decoration-list>li:nth-child(2n){
-	display: inline-block;
-	margin: -0.25em;
-	transform: scale(-1,1);
-}
-
-.page-decoration{
-	width: 40em;
-	height: 5em;
 }
 
 /* ----- Fonts ----- */

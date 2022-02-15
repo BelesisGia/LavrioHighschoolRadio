@@ -62,11 +62,17 @@
 	if (isset($_POST['action']) && $_POST['action'] == 'AddOP'){
 		Admin::AddOP($_POST['username'],$_POST['password']);
 	}
+
+	if (isset($_POST['action']) && $_POST['action'] == 'changeDecorations'){
+		Admin::changeDecorations($_POST['page-decoration']);
+	}
 ?>
 
 <?php 
 	$news_file = file_get_contents('../api/news.json');
 	$news = json_decode($news_file);
+
+	$SETTINGS = json_decode(file_get_contents('../api/settings.json'));
 ?>
 
 <!DOCTYPE html>
@@ -85,6 +91,7 @@
 			xmlHttp.open("GET","./logout.php",true);
 			xmlHttp.send();
 		};
+
 		//Modals
 		document.addEventListener('DOMContentLoaded', function() {
 		    var elems = document.querySelectorAll('.modal');
@@ -99,7 +106,16 @@
 		    	outDuration: 150,
 		    	exitDelay: 0
 		    });
-		  });
+		});
+		//Select UI
+		document.addEventListener('DOMContentLoaded', function() {
+		  var elems = document.querySelectorAll('select');
+		  var instances = M.FormSelect.init(elems, null);
+
+		  var elem = document.getElementById('page-decoration-list');
+		  elem.value = <?php echo $SETTINGS->decoration; ?>;
+		  M.FormSelect.init(elem);
+		});
 
 		function EditArticleModal(index){
 			xmlHttp = new XMLHttpRequest();
@@ -188,6 +204,12 @@
 		.dropmenu:hover{
 			color: #009688;
 			cursor: pointer;
+		}
+		.dropdown-content{
+			background-color: #ffecb3;
+		}
+		.dropdown-content > li > span{
+			color: black;
 		}
 	</style>
 </head>
@@ -525,6 +547,23 @@
 				</div>
 				<i class="material-icons modal-close" style="position: absolute;top: 1em;right: 1em;">close</i>
 			</div>
+
+			<!-- Page Decorations -->
+			<h4>Page Decorations:</h4>
+			<div class="divider"></div>
+			<form method="post">
+				<input type="hidden" name="action" value="changeDecorations">
+				<div class="input-field">
+					<select name="page-decoration" id="page-decoration-list">
+						<option value="0">None</option>
+						<option value="1">Christmas</option>
+						<option value="2">Velentine's Day</option>
+					</select>
+				</div>
+				<div class="center">
+					<button class="btn">Update</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </body>

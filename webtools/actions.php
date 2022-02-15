@@ -87,6 +87,14 @@
 			$json = json_encode(array_values($ops),JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
 			file_put_contents('ops.json', $json);
 		}
+
+		public static function ChangeDecorations($index){
+			$SETTINGS = json_decode(file_get_contents('../api/settings.json'));
+			$SETTINGS->decoration = (int)$index;
+
+			$json = json_encode($SETTINGS,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+			file_put_contents('../api/settings.json', $json);
+		}
 	}
 
 	class Ekpompes{

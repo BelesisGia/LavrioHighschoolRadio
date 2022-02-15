@@ -1,3 +1,35 @@
+/*Christmas Decorations*/
+.christmas-title{
+	transform: scale(-0.3,0.3);
+	position: absolute;
+	top: -0.9em;
+	right: -1.2em;
+}
+.christmas-title-mobile{
+	transform: scale(-0.3,0.3);
+	position: absolute;
+	top: -1em;
+	right: -0.15em;
+}
+.christmas-decoration-list{
+	margin: -3.5em 0px 4em 0px;
+	padding: 0;
+	white-space: nowrap;
+}
+.christmas-decoration-list>li{
+	display: inline-block;
+	margin: -0.25em;
+}
+.christmas-decoration-list>li:nth-child(2n){
+	display: inline-block;
+	margin: -0.25em;
+	transform: scale(-1,1);
+}
+
+.christmas-decoration{
+	width: 40em;
+	height: 5em;
+}
 
 /*Valentine's Day Decorations*/
 .valentines-title{
