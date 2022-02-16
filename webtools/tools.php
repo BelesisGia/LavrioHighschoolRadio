@@ -4,6 +4,7 @@
 		header('Location: login.php');
 	}
 
+	include('../utils.php');
 	include('actions.php');
 
 	//Action DeleteArticle
@@ -334,20 +335,20 @@
 									$ekpompi = ((array)$mera)[$index];
 									if (empty($ekpompi)){ ?>
 										<td>
-											<a class='modal-trigger' href='#editSchedule' onclick="EditScheduleModal(<?php echo '\''.htmlspecialchars($key).'\'' ?>,<?php echo $index ?>)">--
+											<a class='modal-trigger' href='#editSchedule' onclick="EditScheduleModal(<?php toJS($key); ?>,<?php echo $index ?>)">--
 											</a>
 										</td>
 									<?php }
 									else{ ?>
 										<td>
-											<a class='modal-trigger' href='#editSchedule' onclick="EditScheduleModal(<?php echo '\''.htmlspecialchars($key).'\'' ?>,<?php echo $index ?>)"><?php echo htmlspecialchars($ekpompi) ?>
+											<a class='modal-trigger' href='#editSchedule' onclick="EditScheduleModal(<?php toJS($key); ?>,<?php echo $index ?>)"><?php echo htmlspecialchars($ekpompi) ?>
 											</a>
 										</td>
 									<?php }
 								}
 								else{ ?>
 									<td>
-										<a class='modal-trigger' href='#editSchedule' onclick="EditScheduleModal(<?php echo '\''.htmlspecialchars($key).'\'' ?>,<?php echo $index ?>)">--
+										<a class='modal-trigger' href='#editSchedule' onclick="EditScheduleModal(<?php toJS($key); ?>,<?php echo $index ?>)">--
 										</a>
 									</td>
 								<?php }
@@ -365,14 +366,14 @@
 					<ul class="center">
 						<li>
 							<h5>
-								<a class="dropmenu" onclick="SubmitEditScheduleForm(<?php echo '\'\''; ?>)">
+								<a class="dropmenu" onclick="SubmitEditScheduleForm(<?php toJS(''); ?>)">
 									--
 								</a>
 							</h5>
 						</li>
 						<?php foreach ($ekpompes as $key => $value) { ?>
 							<li>
-								<h5><a class="dropmenu" onclick="SubmitEditScheduleForm(<?php echo '\''.htmlspecialchars($key).'\''; ?>)"><?php echo htmlspecialchars($key);?></a></h5>
+								<h5><a class="dropmenu" onclick="SubmitEditScheduleForm(<?php toJS($key); ?>)"><?php echo htmlspecialchars($key);?></a></h5>
 							</li>
 						<?php } ?>
 					</ul>
@@ -439,7 +440,7 @@
 				<?php foreach ($ekpompes as $key => $value) { ?>
 					<li>
 						<h5 class="inline-block"><?php echo htmlspecialchars($key); ?></h5>
-						<a href="#editEkpompi" class="inline-block btn waves-effect modal-trigger" style="margin: 0 0 0 2em;" onclick="EditEkpompiModal(<?php echo '\''.htmlspecialchars($key).'\'' ?>,<?php echo '\''.htmlspecialchars($value).'\'' ?>)">Edit</a>
+						<a href="#editEkpompi" class="inline-block btn waves-effect modal-trigger" style="margin: 0 0 0 2em;" onclick="EditEkpompiModal(<?php toJS($key); ?>,<?php toJS($value); ?>)">Edit</a>
 						<form method="post" class="inline-block" style="margin: 0 0 0 1em;">
 							<input type="hidden" name="action" value="deleteEkpompi">
 							<input type="hidden" name="delete_index" value='<?php echo $key ?>'>
@@ -460,6 +461,7 @@
 						<div style="margin: 2em;"></div>
 						<label>Description:</label>
 						<textarea name="description" form="addEkpompiForm"></textarea>
+						<p class="red-text">Can't use single quote chatacter ( ' )</p>
 						<div style="margin: 2em;"></div>
 						<div class="center">
 							<button class="btn">Add</button>
@@ -480,6 +482,7 @@
 						<div style="margin: 2em;"></div>
 						<label>Description:</label>
 						<textarea name="description" form="editEkpompiForm" id="editEkpompiDescription"></textarea>
+						<p class="red-text">Can't use single quote chatacter ( ' )</p>
 						<div style="margin: 2em;"></div>
 						<div class="center">
 							<button class="btn">Update</button>
