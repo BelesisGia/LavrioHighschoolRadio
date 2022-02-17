@@ -1,4 +1,5 @@
 <?php 
+	include('utils.php');
 	$news_file = fopen('api/news.json', 'r');
 	$news = json_decode(fread($news_file, filesize('api/news.json')));
 
@@ -79,7 +80,10 @@
 			</h4>
 			<!-- Stream Listener -->
 			<div class="unselectable">
-				<audio id="_Stream" src="https://freeuk30.listen2myradio.com/live.mp3?typeportmount=s1_28014_stream_286833095" preload="none"></audio>
+				<!--
+				<audio id="_Stream" src="https://freeuk30.listen2myradio.com/live.mp3?typeportmount=s1_28014_stream_286833095" preload="metadata"></audio>
+				-->
+				<audio id="_Stream" src="https://freeuk30.listen2myradio.com/live.mp3?typeportmount=s1_28014" preload="metadata"></audio>
 				<div>
 					<img id="vinyl" src="images/vinyl.png" style="width: 8em;height:8em;">
 					<!--Controls-->
@@ -105,7 +109,7 @@
 			</div>
 
 			<!-- Social [Mobile Only]-->
-			<div class="hide-on-large-only">
+			<div class="show-s">
 				<div class="inline-block">
 					<h4 class="font-eroded-4em inline-block">Social</h4>
 					<div class="divider" style="margin-bottom: 1em;"></div>
@@ -174,10 +178,13 @@
 										if (empty($ekpompi)){
 											echo "<td>--</td>";
 										}
+										elseif (is_null($ekpompes[$ekpompi])){
+											echo "<td>{ERROR VALUE IS NULL}</td>";
+										}
 										elseif (empty($ekpompes[$ekpompi])){
 											echo "<td>{$ekpompi}</td>";
 										}else{
-											echo "<td class='tooltipped' data-tooltip='{$ekpompes[$ekpompi]}'>{$ekpompi
+											echo "<td class='tooltipped' data-html='true' data-tooltip=".htmlquote($ekpompes[$ekpompi]).">{$ekpompi
 											}</td>";
 										}
 									}
@@ -231,9 +238,9 @@
 	</div>
 	
 	<!--Fixed Top Right -->
-	<div class="fixed-top-right">
+	<div class="fixed-top-right hide-s">
 		<!-- Table Of Contents -->
-		<div class="hide-on-med-and-down">
+		<div>
 			<h4 class="font-eroded-4em">Menu</h4>
 			<div class="divider"></div>
 			<ul class="table-of-contents">
@@ -244,7 +251,7 @@
 			</ul>
 		</div>
 		<!-- Social [Desktop Only]-->
-		<div class="hide-on-med-and-down">
+		<div>
 			<h4 class="font-eroded-4em">Social</h4>
 			<div class="divider"></div>
 			<br>

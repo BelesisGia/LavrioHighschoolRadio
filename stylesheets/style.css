@@ -12,7 +12,7 @@ body {
 .fixed-top-right{
 	position: fixed;
 	top: 15em;
-	right: 10em;
+	right: 4em;
 }
 
 .center-content{
@@ -104,6 +104,20 @@ blockquote{
 .sub-title{
 	margin: 0em 1em;
 }
+
+/* Hide Show Media*/
+@media only screen and (max-width: 1919px){
+	.hide-s{
+		display: none !important;
+	}	
+}
+
+@media only screen and (min-width: 1920px){
+	.show-s{
+		display: none !important;
+	}
+}
+
 
 /* ----- Fonts ----- */
 

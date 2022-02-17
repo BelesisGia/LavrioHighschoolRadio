@@ -82,6 +82,8 @@
 	<title>Tools</title>
 
 	<meta charset="utf-8">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -443,7 +445,7 @@
 						<a href="#editEkpompi" class="inline-block btn waves-effect modal-trigger" style="margin: 0 0 0 2em;" onclick="EditEkpompiModal(<?php toJS($key); ?>,<?php toJS($value); ?>)">Edit</a>
 						<form method="post" class="inline-block" style="margin: 0 0 0 1em;">
 							<input type="hidden" name="action" value="deleteEkpompi">
-							<input type="hidden" name="delete_index" value='<?php echo $key ?>'>
+							<input type="hidden" name="delete_index" value=<?php echo htmlquote($key); ?>>
 							<button class="btn red">Delete</button>
 						</form>
 					</li>
@@ -461,7 +463,6 @@
 						<div style="margin: 2em;"></div>
 						<label>Description:</label>
 						<textarea name="description" form="addEkpompiForm"></textarea>
-						<p class="red-text">Can't use single quote chatacter ( ' )</p>
 						<div style="margin: 2em;"></div>
 						<div class="center">
 							<button class="btn">Add</button>
@@ -482,7 +483,6 @@
 						<div style="margin: 2em;"></div>
 						<label>Description:</label>
 						<textarea name="description" form="editEkpompiForm" id="editEkpompiDescription"></textarea>
-						<p class="red-text">Can't use single quote chatacter ( ' )</p>
 						<div style="margin: 2em;"></div>
 						<div class="center">
 							<button class="btn">Update</button>
