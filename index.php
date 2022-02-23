@@ -79,12 +79,12 @@
 				</a>
 			</h4>
 			<!-- Stream Listener -->
-			<div class="unselectable">
+			<div>
 				<!--
 				<audio id="_Stream" src="https://freeuk30.listen2myradio.com/live.mp3?typeportmount=s1_28014_stream_286833095" preload="metadata"></audio>
 				-->
 				<audio id="_Stream" src="https://freeuk30.listen2myradio.com/live.mp3?typeportmount=s1_28014" preload="metadata"></audio>
-				<div>
+				<div class="unselectable">
 					<img id="vinyl" src="images/vinyl.png" style="width: 8em;height:8em;">
 					<!--Controls-->
 					<div class="inline-block">
@@ -94,6 +94,12 @@
 						<i class="medium material-icons cursor-pointer" onclick="document.getElementById('_Stream').volume -= 0.1" onselectstart="return false;">volume_down</i>
 						<i class="medium material-icons cursor-pointer" onclick="document.getElementById('_Stream').currentTime += document.getElementById('_Stream').duration;" onselectstart="return false;">fast_forward</i>
 					</div>
+				</div>
+				<!-- Stream Info -->
+				<div>
+					<p class="grey-text margin-tb-0" style="font-size: 20px;">Current Listeners: <span id="currentListeners" style="font-weight: bold;">null</span></p>
+					<p class="grey-text margin-tb-0">Song: <span id="currentSong" style="font-weight: bold;">null</span></p>
+					<p class="grey-text margin-tb-0">Stream Status: <span id="streamStatus" style="font-weight: bold;">null</span></p>
 				</div>
 			</div>
 
