@@ -17,6 +17,8 @@
 	<!-- Materialize Css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Google Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/6b4c67839b.js" crossorigin="anonymous"></script>
@@ -86,13 +88,14 @@
 				<audio id="_Stream" src="https://freeuk30.listen2myradio.com/live.mp3?typeportmount=s1_28014" preload="metadata"></audio>
 				<div class="unselectable">
 					<img id="vinyl" src="images/vinyl.png" style="width: 8em;height:8em;">
-					<!--Controls-->
+					<!-- Stream Controls -->
 					<div class="inline-block">
 						<i class="medium material-icons cursor-pointer" onclick="_StreamPlay()" onselectstart="return false;">play_arrow</i>
 						<i class="medium material-icons cursor-pointer" onclick="_StreamStop()" onselectstart="return false;">pause</i>
-						<i class="medium material-icons cursor-pointer" onclick="document.getElementById('_Stream').volume += 0.1" onselectstart="return false;">volume_up</i>
-						<i class="medium material-icons cursor-pointer" onclick="document.getElementById('_Stream').volume -= 0.1" onselectstart="return false;">volume_down</i>
-						<i class="medium material-icons cursor-pointer" onclick="document.getElementById('_Stream').currentTime += document.getElementById('_Stream').duration;" onselectstart="return false;">fast_forward</i>
+						<i id="_StreamMuteBtn" class="medium material-icons cursor-pointer" onclick="_StreamMute()" onselectstart="return false;">volume_off</i>
+						<div class="v-divider-grey"></div>
+						<i class="medium material-icons cursor-pointer" onclick="_StreamIncrementVolume(0.1)" onselectstart="return false;">volume_up</i>
+						<i class="medium material-icons cursor-pointer" onclick="_StreamIncrementVolume(-0.1)" onselectstart="return false;">volume_down</i>
 					</div>
 				</div>
 				<!-- Stream Info -->
