@@ -2,6 +2,13 @@ function _(el) {
   return document.getElementById(el);
 }
 
+function addTempClass(elem,className,delay){
+  _(elem).classList.add(className);
+  setTimeout(function(){
+    _(elem).classList.remove(className);
+  },delay);
+}
+
 //Tooltips
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.tooltipped');
@@ -31,16 +38,19 @@ document.addEventListener('DOMContentLoaded', function() {
 //Stream
 var StreamVolume = 0.8;
 var isMuted = false;
+
 document.addEventListener('DOMContentLoaded',function(){
 	_('_Stream').volume = StreamVolume;
 });
 
 function _StreamPlay(){
+  addTempClass('_StreamPlayBtn','press',300);
 	_('_Stream').play();
 	_('vinyl').classList.add('rotating');
 }
 
 function _StreamStop(){
+  addTempClass('_StreamStopBtn','press',300);
 	_('_Stream').pause();
 	_('vinyl').classList.remove('rotating');
 }
@@ -50,18 +60,24 @@ function _StreamIncrementVolume(amount){
   if (StreamVolume > 1) StreamVolume = 1;
   if (StreamVolume < 0) StreamVolume = 0;
   _('_Stream').volume = StreamVolume;
+  if (amount > 0){
+    addTempClass('_StreamVolumeUpBtn','press',300);
+  }
+  else{
+    addTempClass('_StreamVolumeDownBtn','press',300);
+  }
 }
 
 function _StreamMute(){
   if (!isMuted){
     _('_Stream').volume = 0;
     isMuted = true;
-    _('_StreamMuteBtn').innerHTML = 'volume_up';
+    _('_StreamMuteBtn').classList.add('icon-shadow');
   }
   else{
     _('_Stream').volume = StreamVolume;
     isMuted = false;
-    _('_StreamMuteBtn').innerHTML = 'volume_off';
+    _('_StreamMuteBtn').classList.remove('icon-shadow');
   }
 }
 

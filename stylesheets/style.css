@@ -73,6 +73,33 @@ body {
 	line-height: 30px !important; 
 }
 
+/* Hide Show Media*/
+@media only screen and (max-width: 1919px){
+	.hide-s{
+		display: none !important;
+	}	
+}
+
+@media only screen and (min-width: 1920px){
+	.show-s{
+		display: none !important;
+	}
+}
+
+/* Icons */
+i {
+	border-radius: 40px;
+	transition: all 0.2s;
+}
+
+.icon-shadow{
+	background: #00000033;
+	border-radius: 40px;
+	padding: 5px;
+}
+
+/* Other */
+
 .table-of-contents a {
 	font-size: 20px;
  	font-weight:500;
@@ -134,20 +161,6 @@ blockquote{
 .sub-title{
 	margin: 0em 1em;
 }
-
-/* Hide Show Media*/
-@media only screen and (max-width: 1919px){
-	.hide-s{
-		display: none !important;
-	}	
-}
-
-@media only screen and (min-width: 1920px){
-	.show-s{
-		display: none !important;
-	}
-}
-
 
 /* ----- Fonts ----- */
 

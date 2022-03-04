@@ -90,12 +90,12 @@
 					<img id="vinyl" src="images/vinyl.png" style="width: 8em;height:8em;">
 					<!-- Stream Controls -->
 					<div class="inline-block">
-						<i class="medium material-icons cursor-pointer" onclick="_StreamPlay()" onselectstart="return false;">play_arrow</i>
-						<i class="medium material-icons cursor-pointer" onclick="_StreamStop()" onselectstart="return false;">pause</i>
+						<i id="_StreamPlayBtn" class="medium material-icons cursor-pointer" onclick="_StreamPlay()" onselectstart="return false;">play_arrow</i>
+						<i id="_StreamStopBtn" class="medium material-icons cursor-pointer" onclick="_StreamStop()" onselectstart="return false;">pause</i>
 						<i id="_StreamMuteBtn" class="medium material-icons cursor-pointer" onclick="_StreamMute()" onselectstart="return false;">volume_off</i>
 						<div class="v-divider-grey"></div>
-						<i class="medium material-icons cursor-pointer" onclick="_StreamIncrementVolume(0.1)" onselectstart="return false;">volume_up</i>
-						<i class="medium material-icons cursor-pointer" onclick="_StreamIncrementVolume(-0.1)" onselectstart="return false;">volume_down</i>
+						<i id="_StreamVolumeUpBtn" class="medium material-icons cursor-pointer" onclick="_StreamIncrementVolume(0.1)" onselectstart="return false;">volume_up</i>
+						<i id="_StreamVolumeDownBtn" class="medium material-icons cursor-pointer" onclick="_StreamIncrementVolume(-0.1)" onselectstart="return false;">volume_down</i>
 					</div>
 				</div>
 				<!-- Stream Info -->

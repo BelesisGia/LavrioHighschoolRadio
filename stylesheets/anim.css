@@ -10,3 +10,16 @@
 .rotating {
 	animation: rotating 2s linear infinite;
 }
+
+@-webkit-keyframes press{
+	50%{
+		transform: scale(0.8);
+	}
+	100%{
+		transform: scale(1);
+	}
+}
+
+.press{
+	animation: press 0.2s linear;
+}
