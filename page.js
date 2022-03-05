@@ -9,6 +9,10 @@ function addTempClass(elem,className,delay){
   },delay);
 }
 
+function ScrollToView(_id){
+    _(_id).scrollIntoView({behavior:'smooth'});
+}
+
 //Tooltips
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.tooltipped');
@@ -36,11 +40,19 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 //Stream
-var StreamVolume = 0.8;
+var StreamVolume = 0.5;
 var isMuted = false;
 
 document.addEventListener('DOMContentLoaded',function(){
 	_('_Stream').volume = StreamVolume;
+  _('_Stream').onerror = function(error){
+    console.warn("Stream is not available playing backup audio!");
+    _('_Stream').src = String.raw`audio\What makes me a good Demoman Song.mp3`;
+    _('_Stream').setAttribute("loop",true);
+    _('_Stream').onerror = function(ev){};
+
+    _('currentSong').innerHTML = "What makes me a good Demoman Song(HQ)";
+  };
 });
 
 function _StreamPlay(){
@@ -81,15 +93,12 @@ function _StreamMute(){
   }
 }
 
-//Scroll
-function ScrollToView(_id){
-    _(_id).scrollIntoView({behavior:'smooth'});
-}
-
 //Stream Info
+var getStatusInterval;
+
 document.addEventListener('DOMContentLoaded',function(){
   UpdateInfo();
-  setInterval(UpdateInfo, 5000);
+   getStatusInterval = setInterval(UpdateInfo, 5000);
 });
 
 function UpdateInfo(){
@@ -102,6 +111,7 @@ function UpdateInfo(){
     }
     else{
       _('streamStatus').innerHTML = '<span class="red-text">Offline<span>';
+      clearInterval(getStatusInterval);
       return;
     }
     //Current Listeners
