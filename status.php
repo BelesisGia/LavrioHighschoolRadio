@@ -9,7 +9,7 @@
 				'header'=>'User-Agent: Mozilla/5.0'
 			));
 
-	$html = file_get_contents($ip,false,stream_context_create($opts));
+	$html = @file_get_contents($ip,false,stream_context_create($opts));
 
 	if ($html === false){
 		$response = new Response(500,'Internal Error!',null);

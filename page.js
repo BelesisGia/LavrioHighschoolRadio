@@ -104,8 +104,15 @@ document.addEventListener('DOMContentLoaded',function(){
 function UpdateInfo(){
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onload = function(){
+    //If Server Offline
+    if(xmlHttp.status != 200){
+      _('streamStatus').innerHTML = '<span class="red-text">Offline<span>';
+      clearInterval(getStatusInterval);
+      return;
+    }
+
     var data = JSON.parse(xmlHttp.responseText);
-    //Stream status
+    //Set Stream status
     if (data.data.status == 1){
       _('streamStatus').innerHTML = 'Online';
     }
@@ -114,8 +121,9 @@ function UpdateInfo(){
       clearInterval(getStatusInterval);
       return;
     }
-    //Current Listeners
+    //Set Current Listeners
     _('currentListeners').innerHTML = data.data.listeners;
+    //Set Current Song
     if (data.data.song === ''){
       _('currentSong').innerHTML = 'no data';
     }
